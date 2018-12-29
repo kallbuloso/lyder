@@ -108,6 +108,7 @@ return [
 
     'faker_locale' => 'en_US',
 
+    
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -133,6 +134,7 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+    
 
     'providers' => [
 
