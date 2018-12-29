@@ -1,0 +1,96 @@
+<?php
+
+use App\Providers\Blade\DirectivesRepository;
+
+return [
+
+    /*
+    |---------------------------------------------------------------------
+    | @cpf
+    |---------------------------------------------------------------------
+    */
+	'cpf' => function ($expression) {
+		$expression = DirectivesRepository::stripSpaces($expression);
+
+		return "<?php if ($expression) { echo substr($expression, 0, 3) . '.' . substr($expression, 3, 3) . '.' .substr($expression, 6, 3) . '-' . substr($expression, 9, 2); } ?>";
+	},
+
+	/*
+    |---------------------------------------------------------------------
+    | @cnpj
+    |---------------------------------------------------------------------
+    */
+	'cnpj' => function ($expression) {
+		$expression = DirectivesRepository::stripSpaces($expression);
+
+		return "<?php if ($expression) { echo substr($expression, 0, 2) . '.' . substr($expression, 2, 3) . '.' . substr($expression, 5, 3) . '/' . substr($expression, 8, 4) . '-' . substr($expression, 12, 2); } ?>";
+	},
+
+	/*
+    |---------------------------------------------------------------------
+    | @route('routeName')
+    |---------------------------------------------------------------------
+    */
+	'route' => function ($expression) {
+        return "<?php echo route($expression); ?>";    
+    },
+
+	/*
+    |---------------------------------------------------------------------
+    | @activeIfUrl('UrlName','active')
+    | @activeIfUrl('UrlName','open')
+    |---------------------------------------------------------------------
+    */
+	'activeIfUrl' => function ($expression) {
+        list($url, $class) = explode(',',str_replace(['(',')',' '], '', $expression));
+
+        $activeUrl = "<?php echo e(request()->is({$url}) ? $class : ''); ?>";
+        return $activeUrl;
+    },
+
+	/*
+    |---------------------------------------------------------------------
+    | @telefone
+    |---------------------------------------------------------------------
+    */
+	'telefone' => function ($expression) {
+		$expression = DirectivesRepository::stripSpaces($expression);
+
+		if (strlen($expression) === 10) {
+			// Telefone Fixo / Celular (8 dígitos)
+			return "<?php if ($expression) { echo '(' . substr($expression, 0, 2) . ') ' . substr($expression, 2, 4) . '-' . substr($expression, 6); } ?>";
+		} else if (strlen($expression) === 11) {
+			// Telefone Celular com 9º Dígito
+			return "<?php if ($expression) { echo '(' . substr($expression, 0, 2) . ') ' . substr($expression, 2, 1) . '-' . substr($expression, 3, 4) . '-' . substr($expression, 7); } ?>";
+		} else if (strlen($expression) > 11) {
+			// Telefone com Ramal
+			return "<?php if ($expression) { echo '(' . substr($expression, 0, 2) . ') ' . substr($expression, 2, 1 . '-' . substr($expression, 3, 4) . '-' . substr($expression, 7, 4) . '-' . substr($expression, 11); } ?>";
+		} else {
+			return "<?php if ($expression) { echo $expression; } ?>";
+		}
+	},
+
+	/*
+    |---------------------------------------------------------------------
+    | @dinheiro
+    |---------------------------------------------------------------------
+    */
+	'dinheiro' => function ($expression) {
+		$expression = DirectivesRepository::stripSpaces($expression);
+
+		return "<?php if ($expression) { echo 'R$ ' . number_format($expression, 2, ',', '.'); } ?>";
+	},
+
+	/*
+    |---------------------------------------------------------------------
+    | @cep
+    |---------------------------------------------------------------------
+    */
+	'cep' => function ($expression) {
+		$expression = DirectivesRepository::stripSpaces($expression);
+
+        /* return "<?php if ($expression) { echo substr($expression, 0, 5) . '.' . substr($expression, 2, 3) . '-' . substr($expression, 5, 3); } ?>"; */
+        return "<?php if ($expression) { echo substr($expression, 0, 5) . '-' . substr($expression, 5, 3); } ?>";
+	}
+
+];
