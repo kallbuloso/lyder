@@ -117,6 +117,30 @@ return [
         return '</style>';
     },
 
+    /**
+     * @asset
+     */
+    'asset' => function ($expression) {
+        $expression = DirectivesRepository::parseMultipleArgs($expression);
+
+        $variable = DirectivesRepository::stripQuotes($expression->get(0));
+        $include = DirectivesRepository::stripQuotes($expression->get(1));
+        
+                /*return  "<script>\n".
+                        "window.{$variable} = <?php echo is_array({$expression->get(1)}) ? json_encode({$expression->get(1)}) : '\''.{$expression->get(1)}.'\''; ?>;\n".
+                        '</script>';*/
+        if (ends_with($variable, ".css")) {
+            if (! empty($include)){
+                return '<link rel="stylesheet" id="'.$include.'" href="{{ asset(\''.$variable.'\') }}">';
+            }
+            return '<link rel="stylesheet" href="{{ asset(\''.$variable.'\') }}">';
+        }
+
+        if (ends_with($variable, ".js")) {
+            return '<script src="{{ asset(\''.$variable.'\') }}"></script>';
+        }
+    },
+
     /*
     |---------------------------------------------------------------------
     | @script
@@ -158,8 +182,7 @@ return [
     */
 
     'inline' => function ($expression) {
-        $include = "//  {$expression}\n".
-            "<?php include public_path({$expression}) ?>\n";
+        $include = "<?php include public_path({$expression}) ?>\n";
 
         if (ends_with($expression, ".html'")) {
             return $include;

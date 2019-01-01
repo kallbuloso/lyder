@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        @assets('assets/css/codebase.min.css','id-fe')
 
         <!-- Styles -->
         <style>
@@ -82,6 +83,9 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                </div>
+                <div>
+                    {{ config('cb.name') }}
                 </div>
 
                 <div class="links">
