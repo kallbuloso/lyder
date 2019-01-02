@@ -1,101 +1,69 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.landing.app')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-                <div>
-                    {{ config('cb.name') }}
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+@section('main-container')
+    <main id="main-container">
+        <!-- Hero -->
+        <div class="bg-gd-primary overflow-hidden">
+            <div class="hero bg-black-op-25">
+                <div class="hero-inner">
+                    <div class="content content-full text-center">
+                        <h1 class="display-3 font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInDown">Hero Title</h1>
+                        <h2 class="font-w400 text-white-op mb-50 invisible" data-toggle="appear" data-class="animated fadeInDown">Hero Subtitle.</h2>
+                        <a class="btn btn-hero btn-noborder btn-rounded btn-success mr-5 mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp" href="javascript:void(0)">
+                            <i class="fa fa-rocket mr-10"></i> Call to Action
+                        </a>
+                        <a class="btn btn-hero btn-noborder btn-rounded btn-primary mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp" href="javascript:void(0)">
+                            <i class="fa fa-rocket mr-10"></i> Call to Action
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <!-- END Hero -->
+
+        <!-- Content #1 -->
+        <div class="bg-white">
+            <div class="content content-full">
+                <div class="py-50 text-center">
+                    <h3 class="font-w700 mb-10">Title #1</h3>
+                    <h4 class="font-w400 text-muted mb-0">Content..</h4>
+                </div>
+            </div>
+        </div>
+        <!-- END Content #1 -->
+
+        <!-- Content #2 -->
+        <div class="bg-body-light">
+            <div class="content content-full">
+                <div class="py-50 text-center">
+                    <h3 class="font-w700 mb-10">Title #2</h3>
+                    <h4 class="font-w400 text-muted mb-0">Content..</h4>
+                </div>
+            </div>
+        </div>
+        <!-- END Content #2 -->
+
+        <!-- Content #3 -->
+        <div class="bg-white">
+            <div class="content content-full">
+                <div class="py-50 text-center">
+                    <h3 class="font-w700 mb-10">Title #3</h3>
+                    <h4 class="font-w400 text-muted mb-0">Content..</h4>
+                </div>
+            </div>
+        </div>
+        <!-- END Content #3 -->
+
+        <!-- Call to Action -->
+        <div class="bg-body-light">
+            <div class="content content-full text-center">
+                <div class="py-50">
+                    <h3 class="font-w700 mb-10">Title</h3>
+                    <h4 class="font-w400 text-muted mb-30">Subtitle.</h4>
+                    <a class="btn btn-hero btn-rounded btn-alt-primary" href="">Call to Action</a>
+                </div>
+            </div>
+        </div>
+        <!-- END Call to Action -->
+    </main>
+@endsection

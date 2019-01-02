@@ -37,7 +37,7 @@
             <!-- END Side Header -->
 
             <!-- Side User -->
-            <div class="content-side content-side-full content-side-user px-10 align-parent">
+            {{--  <div class="content-side content-side-full content-side-user px-10 align-parent">
                 <!-- Visible only in mini mode -->
                 <div class="sidebar-mini-visible-b align-v animated fadeIn">
                     <img class="img-avatar img-avatar32" src="assets/img/avatars/avatar15.jpg" alt="">
@@ -67,15 +67,15 @@
                     </ul>
                 </div>
                 <!-- END Visible only in normal mode -->
-            </div>
+            </div>  --}}
             <!-- END Side User -->
 
             <!-- Side Navigation -->
             <div class="content-side content-side-full">
-                <button type="button" class="btn btn-block btn-alt-success push d-flex align-items-center justify-content-between">
+                {{--  <button type="button" class="btn btn-block btn-alt-success push d-flex align-items-center justify-content-between">
                     <span>Add Project</span>
                     <i class="fa fa-plus float-right"></i>
-                </button>
+                </button>  --}}
                 <ul class="nav-main">
                     @include('layouts.default.backend.menu')
                 </ul>
