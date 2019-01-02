@@ -8,6 +8,9 @@
 
         <title>{{ config('app.name') }} | @yield('title_header', config('app.name'))</title>
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
@@ -19,6 +22,9 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="">
         <meta property="og:image" content="">
+        <!-- Custom Meta -->
+        @stack('meta')
+        <!-- End Custom Meta -->
 
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
@@ -28,14 +34,24 @@
         <!-- END Icons -->
 
         <!-- Stylesheets -->
-        <!-- Codebase framework -->
-        <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
+        <!-- Base framework -->
+        @asset('assets/css/codebase.min.css','css-main')    
+        
+        <!-- Custom Stylesheet -->
+        @stack('stylesheet')
+        <!-- End Custom Stylesheet -->
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
+        {{--  @asset('assets/css/themes/corporate.min.css','css-main')  --}}
         <!-- END Stylesheets -->
     </head>
     <body>
         @yield('container')
+        <!-- Codebase Core JS -->
+        @asset('assets/js/codebase.min.js')
+        @asset('assets/js/core/jquery.min.js')
+        <!-- Custom Scripts -->
+        @stack('scripts')
+        <!-- End Custom Scripts -->
     </body>
 </html>
