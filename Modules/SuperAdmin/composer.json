@@ -1,0 +1,25 @@
+{
+    "name": "kallbuloso/superadmin",
+    "description": "",
+    "authors": [
+        {
+            "name": "Amaral karl",
+            "email": "kallbuloso@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\SuperAdmin\\Providers\\SuperAdminServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\SuperAdmin\\": ""
+        }
+    }
+}

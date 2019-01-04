@@ -1,0 +1,25 @@
+{
+    "name": "kallbuloso/datamemory",
+    "description": "",
+    "authors": [
+        {
+            "name": "Amaral karl",
+            "email": "kallbuloso@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\DataMemory\\Providers\\DataMemoryServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\DataMemory\\": ""
+        }
+    }
+}

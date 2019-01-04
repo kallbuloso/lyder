@@ -3,12 +3,22 @@
 @section('main-container')
 <main id="main-container">
         <!-- Hero -->
-        <div class="bg-primary">
+        <div class="bg-primary overflow-hidden">
             <div class="bg-pattern bg-black-op-25" style="background-image: url('assets/img/various/bg-pattern.png');">
-                <div class="content content-top text-center">
-                    <div class="py-10">
-                        <h1 class="font-w700 text-white mb-10">Blog</h1>
-                        <h2 class="h4 font-w400 text-white-op">Our latest news and learning articles.</h2>
+                <div class="hero-inner">
+                    <div class="content content-full text-center">
+                        <h1 class="display-1 font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInDown">
+                            Blog
+                        </h1>
+                        <h2 class="font-w400 text-white-op mb-50 invisible" data-toggle="appear" data-class="animated fadeInDown">
+                            Our latest news and learning articles.
+                        </h2>
+                        <a class="btn btn-hero btn-noborder btn-rounded btn-success mr-5 mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp" href="javascript:void(0)">
+                            <i class="fa fa-rocket mr-10"></i> Call to Action
+                        </a>
+                        <a class="btn btn-hero btn-noborder btn-rounded btn-primary mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp" href="javascript:void(0)">
+                            <i class="fa fa-rocket mr-10"></i> Call to Action
+                        </a>
                     </div>
                 </div>
             </div>

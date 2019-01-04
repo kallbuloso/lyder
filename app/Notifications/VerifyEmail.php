@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class VerifyEmail extends Notification implements ShouldQueue
+class VerifyEmail extends Notification 
 {
 
     use Queueable;
@@ -45,13 +45,11 @@ class VerifyEmail extends Notification implements ShouldQueue
         }
 
         return (new MailMessage)
-            ->subject(Lang::getFromJson('Verify Email Address'))
-            ->line(Lang::getFromJson('Please click the button below to verify your email address.'))
-            ->action(
-                Lang::getFromJson('Verify Email Address'),
-                $this->verificationUrl($notifiable)
-            )
-            ->line(Lang::getFromJson('If you did not create an account, no further action is required.'));
+            ->subject('Verify Email Address')
+            ->line('Please click the button below to verify your email address.')
+            ->action('Verify Email Address',
+                $this->verificationUrl($notifiable))
+            ->line('If you did not create an account, no further action is required.');
     }
 
     /**

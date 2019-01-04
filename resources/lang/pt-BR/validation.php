@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'accepted'             => 'O campo :attribute deve ser aceito.',
+    // 'accepted'             => 'O campo :attribute deve ser aceito.',
+    'accepted'             => 'Este campo deve ser aceito.',
+    // 'accepted_terms'       => 'O termo de uso deve ser aceito.',
     'active_url'           => 'O campo :attribute não é uma URL válida.',
     'after'                => 'O campo :attribute deve ser uma data posterior a :date.',
     'after_or_equal'       => 'O campo :attribute deve ser uma data posterior ou igual a :date.',
@@ -164,6 +166,7 @@ return [
         'excerpt' => 'resumo',
         'gender' => 'gênero',
         'hour' => 'hora',
+        'nik_name' => 'apelido',
         'first_name' => 'primeiro nome',
         'last_name' => 'sobrenome',
         'level' => 'nível',

@@ -1,0 +1,14 @@
+{
+    "name": "DataMemory",
+    "alias": "datamemory",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\DataMemory\\Providers\\DataMemoryServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

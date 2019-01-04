@@ -8,6 +8,10 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        {{-- @asset('assets/js/plugins/sweetalert2/sweetalert2.min.css') --}}
+        {{-- <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script> --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script> 
 
         <!-- Styles -->
         <style>
@@ -87,17 +91,29 @@
                     {{ config('cb.name') }}
                 </div>
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div> --}}
+                <! -- Include this after the sweet alert js file -->
+                <div class="links">
+                    @include('sweet::alert')
+                    <a href="{{ route('alert','basic')}}">basic</a>
+                    <a href="{{ route('alert','success')}}">success alert</a>
+                    <a href="{{ route('alert','warning')}}">warning alert</a>
+                    <a href="{{ route('alert','info')}}">info alert</a>
+                    <a href="{{ route('alert','error')}}">error</a>
                 </div>
             </div>
         </div>
-        <script src="js/sweetalert.min.js"></script>
-        @include('sweet::alert')
+        {{-- <script src="js/sweetalert.min.js"></script> --}}
+        {{-- <script src="/js/sweetalert.min.js"></script> --}}
+        {{-- @asset('assets/js/plugins/sweetalert2/es6-promise.auto.min.js')
+        @asset('assets/js/plugins/sweetalert2/sweetalert2.min.js') --}}
+        {{-- @include('sweet::alert') --}}
     </body>
 </html>

@@ -2,6 +2,8 @@
 @push('scripts')
     @asset('assets/js/core/jquery.appear.min.js')
     @asset('assets/js/core/js.cookie.min.js')
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>  --}}
     {{--  <script src="/assets/js/core/jquery.min.js"></script>  --}}
     {{--  <script src="/assets/js/core/bootstrap.bundle.min.js"></script>  --}}
     {{--  <script src="/assets/js/core/jquery.slimscroll.min.js"></script>  --}}

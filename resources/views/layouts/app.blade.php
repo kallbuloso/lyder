@@ -76,6 +76,7 @@
             @yield('content')
         </main>
     </div>
-
+    @asset('assets/js/plugins/sweetalert2/es6-promise.auto.min.js')
+    @asset('assets/js/plugins/sweetalert2/sweetalert2.min.js')
 </body>
 </html>
