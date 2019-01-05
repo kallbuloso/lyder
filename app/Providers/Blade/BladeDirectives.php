@@ -15,8 +15,8 @@ return [
     'truncate' => function ($expression) {
         list($string, $length) = explode(',',str_replace(['(',')',' '], '', $expression));
 
-        $trunc = "<?php echo e(strlen({$string}) > {$length} ? substr({$string},0,{$length}).'...' : {$string}); ?>";
-        return $trunc;
+        $trunc = "strlen({$string}) > {$length} ? substr({$string},0,{$length}).'...' : {$string}";
+        return '{!! '. $trunc .' !!}';
     },
 
 

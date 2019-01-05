@@ -4,24 +4,7 @@
         <span class="sidebar-mini-hide">Dashboard</span>
     </a>
 </li>
-<li class="nav-main-heading">
-    <span class="sidebar-mini-visible">HQ</span>
-    <span class="sidebar-mini-hidden">Headquarters</span>
-</li>
-<li>
-    <a class="nav-submenu" data-toggle="nav-submenu" href="#">
-        <i class="si si-briefcase"></i>
-        <span class="sidebar-mini-hide">Projects</span>
-    </a>
-    <ul>
-        <li>
-            <a href="">New</a>
-        </li>
-        <li>
-            <a href="">Manage</a>
-        </li>
-    </ul>
-</li>
+@include('blog::layouts.menu')
 <li>
     <a href="">
         <i class="si si-docs"></i>

@@ -28,21 +28,19 @@
 
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/favicon-192x192.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
+        <link rel="shortcut icon" href="/assets/img/favicons/favicon.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/favicon-192x192.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon-180x180.png">
         <!-- END Icons -->
 
         <!-- Stylesheets -->
-        <!-- Base framework -->
-        @asset('assets/css/codebase.min.css','css-main')
-        {{-- @asset('assets/js/plugins/sweetalert2/sweetalert2.min.css')    --}}
-        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>  --}}
-        
         <!-- Custom Stylesheet -->
         @stack('stylesheet')
         <!-- End Custom Stylesheet -->
+
+        <!-- Base framework -->
+        @asset('assets/css/codebase.css','css-main')
+        
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         {{--  @asset('assets/css/themes/corporate.min.css','css-main')  --}}
@@ -50,20 +48,17 @@
     </head>
     <body>
         @yield('container')
+        
+        {{--  @asset('assets/js/codebase.min.js')  --}}
         <!-- Codebase Core JS -->
         @asset('assets/js/core/jquery.min.js')
-        @asset('assets/js/codebase.min.js')
-        {{-- @asset('assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js') --}}
-        {{-- @asset('assets/js/plugins/sweetalert2/es6-promise.auto.min.js')
-        @asset('assets/js/plugins/sweetalert2/sweetalert2.min.js')
-
-        <script src="assets/js/pages/be_ui_activity.js"></script> --}}
-        {{-- <script>
-            jQuery(function () {
-                // Init page helpers (BS Notify Plugin)
-                Codebase.helpers('notify');
-            });
-        </script> --}}
+        @asset('assets/js/core/bootstrap.bundle.min.js')
+        @asset('assets/js/core/jquery.slimscroll.min.js')
+        @asset('assets/js/core/jquery.scrollLock.min.js')
+        @asset('assets/js/core/jquery.appear.min.js')
+        @asset('assets/js/core/jquery.countTo.min.js')
+        @asset('assets/js/core/js.cookie.min.js')
+        @asset('assets/js/codebase.js')
 
         <!-- Custom Scripts -->
         @stack('scripts')

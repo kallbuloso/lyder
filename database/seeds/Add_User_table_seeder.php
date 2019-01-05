@@ -19,6 +19,7 @@ class Add_User_table_seeder extends Seeder
         $user = new \App\Models\User();
         $date = Carbon::create(2018, 7, 18, 9);
         $faker =  Faker::create(app()->getLocale());
+        $qntd = '30';
         
         $fn = $faker->firstName;
         $ln = $faker->lastName;
@@ -52,7 +53,7 @@ class Add_User_table_seeder extends Seeder
         // $populator->addEntity('0');
 
 
-        for ($i=1; $i <10 ; $i++) {
+        for ($i=1; $i <$qntd ; $i++) {
             //$tamps = Carbon::now()->subDays(100)->addDays($i);
             $tamps = $date->addDays($i);
             $fn = $faker->firstName;

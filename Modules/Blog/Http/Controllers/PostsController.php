@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Blog\Models\Post;
 
-class BlogController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest('published_at')->get();
-
-        return view('blog::index', compact('posts'));
+        $posts = Post::all();
+        return view('blog::admin.index', compact('posts'));
     }
 
     /**

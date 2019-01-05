@@ -1,7 +1,7 @@
 @extends('layouts.backend.app')
 
 @section('main-container')
-<main id="main-container">
+    <main id="main-container">
         <!-- Page Content -->
         <!-- Hero -->
         <div class="bg-image bg-image-bottom" style="background-image: url('assets/img/photos/photo34@2x.jpg');">
@@ -115,3 +115,11 @@
         <!-- END Page Content -->
     </main>
 @endsection
+
+@push('scripts')
+    
+@endpush
+
+@push('stylesheet')
+    
+@endpush

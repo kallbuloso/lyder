@@ -16,11 +16,11 @@ class PostTableSeeder extends Seeder
     {
         $faker =  Faker::create(app()->getLocale());
         DB::table('posts')->truncate();
-        DB::table('post_tags')->truncate();
+        DB::table('post_tag')->truncate();
         // $date = Carbon::create(2018, 10, 10, 10);
         $date = Carbon::now();
         $date->subDays(-1);
-        $qntd = '25';
+        $qntd = '30';
         
         for ($i=1; $i <$qntd ; $i++) {
             
@@ -29,12 +29,12 @@ class PostTableSeeder extends Seeder
             $image = "Post_image_" . rand(1,5) . "jpg";
             $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
             DB::table('posts')->insert([
-                'author_id'     => "{$i}",
+                'author_id'     => rand(1,$qntd),
                 'title'     => $title,
                 'url'     => str_slug($title),
                 'slug'      => $faker->slug(),
                 'excerpt'       => $faker->text(rand(250,300)),
-                'body'      => $faker->paragraphs(rand(10,15),true),
+                'body'      => $faker->paragraphs(rand(10,20),true),
                 'image'     => rand(0,1) == 1 ? $image : NULL,
                 'category_id' => rand(1,3),
                 'created_at' => clone($date),
@@ -62,7 +62,7 @@ class PostTableSeeder extends Seeder
         ]);
         
         // tags
-        for ($i=1; $i <$qntd ; $i++) {
+        for ($i=0; $i <$qntd ; $i++) {
             DB::table('tags')->insert([
                 'name' => $faker->lastname(),
                 'created_at' => clone($date),
@@ -71,10 +71,10 @@ class PostTableSeeder extends Seeder
         }
 
         // Posts Tags
-        for ($i=1; $i <$qntd ; $i++) {
-            DB::table('post_tags')->insert([
-                'post_id' => rand(1,30),
-                'tag_id' => rand(1,30),
+        for ($i=0; $i <$qntd ; $i++) {
+            DB::table('post_tag')->insert([
+                'post_id' => rand(1,$qntd),
+                'tag_id' => rand(1,$qntd),
                 'created_at' => clone($date),
                 'updated_at' => clone($date)
             ]);

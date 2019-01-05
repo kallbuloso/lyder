@@ -1,7 +1,7 @@
 @extends('blog::layouts.front')
 
 @section('main-container')
-<main id="main-container">
+    <main id="main-container">
         <!-- Hero -->
         <div class="bg-primary overflow-hidden">
             <div class="bg-pattern bg-black-op-25" style="background-image: url('assets/img/various/bg-pattern.png');">
@@ -24,96 +24,46 @@
             </div>
         </div>
         <!-- END Hero -->
-
         <!-- Blog and Sidebar -->
         <div class="content">
             <div class="row items-push py-30">
                 <!-- Posts -->
                 <div class="col-xl-8">
+                    @foreach ($posts as $post)
                     <div class="mb-50">
                         <div class="overflow-hidden rounded mb-20" style="height: 200px;">
                             <a class="img-link" href="be_pages_generic_story.html">
                                 <img class="img-fluid" src="assets/img/photos/photo3@2x.jpg" alt="">
                             </a>
                         </div>
-                        <h3 class="h4 font-w700 text-uppercase mb-5">The new version is now live!</h3>
+                        <h3 class="h4 font-w700 text-uppercase mb-5">{{ $post->title }}</h3>
                         <div class="text-muted mb-10">
                             <span class="mr-15">
-                                <i class="fa fa-fw fa-calendar mr-5"></i>July 16, 2017
+                                <i class="fa fa-fw fa-calendar mr-5"></i>{{ $post->date }}
                             </span>
                             <a class="text-muted mr-15" href="be_pages_generic_profile.html">
-                                <i class="fa fa-fw fa-user mr-5"></i>John Smith
+                                <i class="fa fa-fw fa-user mr-5"></i>{{ $post->author->name }}
                             </a>
-                            <a class="text-muted" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-tag mr-5"></i>News
+                            <a class="text-muted mr-15" href="javascript:void(0)">
+                                <i class="fa fa-folder-open mr-5"></i> {{ $post->category->name }}
                             </a>
-                        </div>
-                        <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                        <a class="link-effect font-w600" href="be_pages_generic_story.html">Read More..</a>
-                    </div>
-                    <div class="mb-50">
-                        <div class="overflow-hidden rounded mb-20" style="height: 200px;">
-                            <a class="img-link" href="be_pages_generic_story.html">
-                                <img class="img-fluid" src="assets/img/photos/photo7@2x.jpg" alt="">
+                            <a class="text-muted mr-15" href="javascript:void(0)">
+                                <i class="fa fa-comment mr-5"></i> Comentários 23
                             </a>
                         </div>
-                        <h3 class="h4 font-w700 text-uppercase mb-5">How to work from home more efficiently</h3>
+                        <P>@truncate($post->excerpt,'220')</P>
+                        @isset($post->tags)
                         <div class="text-muted mb-10">
-                            <span class="mr-15">
-                                <i class="fa fa-fw fa-calendar mr-5"></i>July 10, 2017
-                            </span>
-                            <a class="text-muted mr-15" href="be_pages_generic_profile.html">
-                                <i class="fa fa-fw fa-user mr-5"></i>John Smith
-                            </a>
-                            <a class="text-muted" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-tag mr-5"></i>Inpiration
-                            </a>
-                        </div>
-                        <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                        <a class="link-effect font-w600" href="be_pages_generic_story.html">Read More..</a>
-                    </div>
-                    <div class="mb-50">
-                        <div class="overflow-hidden rounded mb-20" style="height: 200px;">
-                            <a class="img-link" href="be_pages_generic_story.html">
-                                <img class="img-fluid" src="assets/img/photos/photo28@2x.jpg" alt="">
-                            </a>
-                        </div>
-                        <h3 class="h4 font-w700 text-uppercase mb-5">Travel the world and feel alive</h3>
-                        <div class="text-muted mb-10">
-                            <span class="mr-15">
-                                <i class="fa fa-fw fa-calendar mr-5"></i>July 5, 2017
-                            </span>
-                            <a class="text-muted mr-15" href="be_pages_generic_profile.html">
-                                <i class="fa fa-fw fa-user mr-5"></i>John Smith
-                            </a>
-                            <a class="text-muted" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-tag mr-5"></i>Travel
-                            </a>
-                        </div>
-                        <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                        <a class="link-effect font-w600" href="be_pages_generic_story.html">Read More..</a>
-                    </div>
-                    <div class="mb-50">
-                        <div class="overflow-hidden rounded mb-20" style="height: 200px;">
-                            <a class="img-link" href="be_pages_generic_story.html">
-                                <img class="img-fluid" src="assets/img/photos/photo30@2x.jpg" alt="">
-                            </a>
-                        </div>
-                        <h3 class="h4 font-w700 text-uppercase mb-5">Believe in your dreams and start working</h3>
-                        <div class="text-muted mb-10">
-                            <span class="mr-15">
-                                <i class="fa fa-fw fa-calendar mr-5"></i>July 1, 2017
-                            </span>
-                            <a class="text-muted mr-15" href="be_pages_generic_profile.html">
-                                <i class="fa fa-fw fa-user mr-5"></i>John Smith
-                            </a>
-                            <a class="text-muted" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-tag mr-5"></i>Motivation
-                            </a>
-                        </div>
-                        <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                        <a class="link-effect font-w600" href="be_pages_generic_story.html">Read More..</a>
-                    </div>
+                            @foreach ($post->tags as $tag)
+                                <a class="text-muted" href="javascript:void(0)">
+                                    <i class="fa fa-fw fa-tag"></i>{{ $tag->name }} 
+                                </a>
+                            @endforeach                            
+                        </div>                            
+                        @endisset
+                        <a class="link-effect font-w600" href="be_pages_generic_story.html">{{ __('Ler Mais...') }}</a>
+                    </div>                        
+                    @endforeach
                     <nav class="clearfix push">
                         <a class="btn btn-secondary min-width-100 float-right" href="javascript:void(0)">
                             Next <i class="fa fa-arrow-right ml-5"></i>
@@ -284,7 +234,7 @@
         </div>
         <!-- END Blog and Sidebar -->
 
-        <!-- Inspiring Quotes -->
+        {{--  <!-- Inspiring Quotes -->
         <div class="bg-body-dark">
             <div class="content content-full text-center">
                 <div class="py-30 invisible" data-toggle="appear">
@@ -308,6 +258,9 @@
                 </div>
             </div>
         </div>
-        <!-- END Inspiring Quotes -->
+        <!-- END Inspiring Quotes -->  --}}
     </main>
 @stop
+
+@push('scripts')
+@endpush
