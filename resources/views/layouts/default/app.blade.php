@@ -6,22 +6,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-        <title>@yield('title_header', config('app.name'))</title>
+        <title>"@yield('title_header', config('app.name'))"</title>
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
+        <meta name="description" content="@yield('description', 'Description')">
+        <meta name="author" content="@yield('author', 'Amaral karl')">
         <meta name="robots" content="noindex, nofollow">
 
         <!-- Open Graph Meta -->
-        <meta property="og:title" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework">
-        <meta property="og:site_name" content="Codebase">
-        <meta property="og:description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="">
-        <meta property="og:image" content="">
+        <meta property="og:title" content="@yield('title_header', 'Title')">
+        <meta property="og:site_name" content="{{ config('app.name') }}">
+        <meta property="og:description" content="@yield('description', 'Description')">
+        <meta property="og:type" content="@yield('og-type', 'website')">
+        <meta property="og:url" content="@yield('og-url', Request::url())">
+        <meta property="og:image" content="@yield('og-image', Request::url())">
         <!-- Custom Meta -->
         @stack('meta')
         <!-- End Custom Meta -->

@@ -14,7 +14,7 @@
                 <!-- User Info -->
                 <div class="content-header-item">
                     <a class="img-link mr-5" href="">
-                        <img class="img-avatar img-avatar32" src="assets/img/avatars/avatar0.jpg" alt="">
+                        <img class="img-avatar img-avatar32" src="/assets/img/avatars/avatar0.jpg" alt="">
                     </a>
                     <a class="align-middle link-effect text-white-op font-w600" href="">Admin</a>
                 </div>

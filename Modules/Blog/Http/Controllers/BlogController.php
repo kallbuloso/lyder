@@ -6,18 +6,25 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Blog\Models\Post;
+use Modules\Blog\Models\Tag;
+// use Modules\Blog\Models\Category;
 
 class BlogController extends Controller
 {
+    protected $limit = 6;
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
-    {
-        $posts = Post::latest('published_at')->get();
+    {   // $posts = Post::LatestFirst()->get();
+        $posts = Post::with('author')
+                    ->latestFirst()
+                    ->published()
+                    ->paginate($this->limit);
+        $tags = Tag::all();
 
-        return view('blog::index', compact('posts'));
+        return view('blog::index', compact('posts', 'tags'));
     }
 
     /**

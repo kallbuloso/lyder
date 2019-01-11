@@ -97,29 +97,98 @@ return [
         | Set the generate key to false to not generate that folder
         */
         'generator' => [
-            'config' => ['path' => 'Config', 'generate' => true],
-            'command' => ['path' => 'Console', 'generate' => false],
-            'migration' => ['path' => 'Database/Migrations', 'generate' => true],
-            'seeder' => ['path' => 'Database/Seeders', 'generate' => false],
-            'factory' => ['path' => 'Database/factories', 'generate' => false],
-            'model' => ['path' => 'Models', 'generate' => true],
-            'controller' => ['path' => 'Http/Controllers', 'generate' => true],
-            'filter' => ['path' => 'Http/Middleware', 'generate' => true],
-            'request' => ['path' => 'Http/Requests', 'generate' => false],
-            'provider' => ['path' => 'Providers', 'generate' => true],
-            'assets' => ['path' => 'Resources/assets', 'generate' => true],
-            'lang' => ['path' => 'Resources/lang', 'generate' => false],
-            'views' => ['path' => 'Resources/views', 'generate' => true],
-            'test' => ['path' => 'Tests', 'generate' => false],
-            'repository' => ['path' => 'Repositories', 'generate' => true],
-            'event' => ['path' => 'Events', 'generate' => false],
-            'listener' => ['path' => 'Listeners', 'generate' => false],
-            'policies' => ['path' => 'Policies', 'generate' => false],
-            'rules' => ['path' => 'Rules', 'generate' => true],
-            'jobs' => ['path' => 'Jobs', 'generate' => false],
-            'emails' => ['path' => 'Emails', 'generate' => false],
-            'notifications' => ['path' => 'Notifications', 'generate' => true],
-            'resource' => ['path' => 'Transformers', 'generate' => false],
+            'config' => [
+                'path' => 'Config', 
+                'generate' => true
+            ],
+            'command' => [
+                'path' => 'Console', 
+                'generate' => false
+            ],
+            'migration' => [
+                'path' => 'Database/Migrations', 
+                'generate' => true
+            ],
+            'seeder' => [
+                'path' => 'Database/Seeders', 
+                'generate' => false
+            ],
+            'factory' => [
+                'path' => 'Database/factories', 
+                'generate' => false
+            ],
+            'model' => [
+                'path' => 'Models', 
+                'generate' => true
+            ],
+            'controller' => [
+                'path' => 'Http/Controllers', 
+                'generate' => true
+            ],
+            'filter' => [
+                'path' => 'Http/Middleware', 
+                'generate' => true
+            ],
+            'request' => [
+                'path' => 'Http/Requests', 
+                'generate' => false
+            ],
+            'provider' => [
+                'path' => 'Providers', 
+                'generate' => true
+            ],
+            'assets' => [
+                'path' => 'Resources/assets', 
+                'generate' => true
+            ],
+            'lang' => [
+                'path' => 'Resources/lang', 
+                'generate' => false
+            ],
+            'views' => [
+                'path' => 'Resources/views', 
+                'generate' => true
+            ],
+            'test' => [
+                'path' => 'Tests', 
+                'generate' => false
+            ],
+            'repository' => [
+                'path' => 'Repositories', 
+                'generate' => true
+            ],
+            'event' => [
+                'path' => 'Events', 
+                'generate' => false
+            ],
+            'listener' => [
+                'path' => 'Listeners', 
+                'generate' => false
+            ],
+            'policies' => [
+                'path' => 'Policies', 
+                'generate' => false
+            ],
+            'rules' => [
+                'path' => 'Rules', 
+                'generate' => true
+            ],
+            'jobs' => [
+                'path' => 'Jobs', 
+                'generate' => false
+            ],
+            'emails' => [
+                'path' => 'Emails', 
+                'generate' => false
+            ],
+            'notifications' => [
+                'path' => 'Notifications', 
+                'generate' => true
+            ],
+            'resource' => [
+                'path' => 'Transformers', 
+                'generate' => false
+            ],
         ],
     ],
     /*

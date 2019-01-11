@@ -9,7 +9,7 @@
     </a>
     <ul>
         <li>
-            <a class="@activeIfUrl('blog/admin','active')" href="{{ route('dashboard') }}">
+            <a class="@activeIfUrl('blog/admin/post','active')" href="{{ route('allPosts') }}">
                 <span class="sidebar-mini-hide">
                     <i class="fa fa-eye mr-5"></i> 
                     {{ __('Posts') }}
@@ -17,15 +17,12 @@
             </a>
         </li>
         <li>
-            <a href="javascript:void(0)">Manage</a>
-        </li>
-        <li>
-            <a href="">
+            <a class="@activeIfUrl('blog/admin/post/create','active')" href="{{ route('post.create') }}">
                 <span class="sidebar-mini-hide">
-                    <i class="si si-wallet mr-5"></i>
-                    Payments
+                    <i class="fa fa-edit mr-5"></i> 
+                    {{ __('Criar post') }}
                 </span>
             </a>
-        </li>
+        </li>        
     </ul>
 </li>

@@ -8,7 +8,7 @@
 var BeTableDatatables = function() {
     // Override a few DataTable defaults, for more examples you can check out https://www.datatables.net/
     var exDataTable = function() {
-        jQuery.extend( jQuery.fn.dataTable.ext.classes, {
+        jQuery.extend( jQuery.fn.dataTable, {
             sWrapper: "dataTables_wrapper dt-bootstrap4"
         });
     };

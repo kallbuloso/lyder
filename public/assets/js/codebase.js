@@ -1257,7 +1257,46 @@ var Codebase = function() {
 
         // Init full text editor
         if (jQuery('#js-ckeditor:not(.js-ckeditor-enabled)').length) {
-            CKEDITOR.replace('js-ckeditor');
+            //CKEDITOR.replace('js-ckeditor');
+            CKEDITOR.replace('js-ckeditor', {
+                toolbar: [
+                
+                    { name: 'document', items       : [ 'Preview', 'Print', '-', 'Templates' ] },
+                    { name: 'clipboard', items      : [ 'Cut','Copy','SelectAll','Paste','-','Undo','Redo' ] },
+                    { name: 'editing', items        : [ 'Find', 'Replace'] },
+                    { name: 'paragraph', items      : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote', //'CreateDiv',
+                    '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','BidiLtr','BidiRtl' ] },
+                    { name: 'basicstyles', items    : [ 'Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat' ] },
+                    { name: 'colors', items         : [ 'TextColor', 'BGColor' ] },
+                    { name: 'styles', items         : [ 'Styles','Format','Font','FontSize' ] },
+                    { name: 'insert', items         : [ 'Image','Table','HorizontalRule','Smiley','SpecialChar','Iframe' ] },
+                    { name: 'links', items          : [ 'Link','Unlink' ] },
+                    { name: 'tools', items          : [ 'Maximize'] },
+                    /*
+                    { name: 'document', items: [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ] },
+                    { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+                    { name: 'editing', items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
+                    { name: 'forms', items: [ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField' ] },
+                    '/',
+                    { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat' ] },
+                    { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
+                    { name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+                    { name: 'insert', items: [ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+                    '/',
+                    { name: 'styles', items: [ 'Styles', 'Format', 'Font', 'FontSize' ] },
+                    { name: 'colors', items: [ 'TextColor', 'BGColor' ] },
+                    { name: 'tools', items: [ 'Maximize', 'ShowBlocks' ] },
+                    { name: 'about', items: [ 'About' ] }
+                    */
+//
+                ]});
+            // CKEDITOR.config.language = 'pt-br';
+            // CKEDITOR.editorConfig = function( config ) {
+            //     config.language = "pt-br";
+            // };        
+            CKEDITOR.config.heigth = 1000;
+            // CKEDITOR.config.removePlugins = "elementspath";
+            // CKEDITOR.config.resize_enabled = false;
 
             // Add .js-ckeditor-enabled class to tag it as activated
             jQuery('#js-ckeditor').addClass('js-ckeditor-enabled');
@@ -1325,11 +1364,36 @@ var Codebase = function() {
             el.addClass('js-datepicker-enabled');
 
             // Init
+            //el.datepicker({
+            //    weekStart: el.data('week-start') || 0,
+            //    autoclose: el.data('autoclose') || false,
+            //    todayHighlight: el.data('today-highlight') || false,
+            //    orientation: 'bottom' // Position issue when using BS4, set it to bottom until officially supported
+            //});
+
             el.datepicker({
-                weekStart: el.data('week-start') || 0,
-                autoclose: el.data('autoclose') || false,
-                todayHighlight: el.data('today-highlight') || false,
-                orientation: 'bottom' // Position issue when using BS4, set it to bottom until officially supported
+                //'data-date-format'=>'dd/mm/yyyy',
+                //'data-week-start'=>'1', 
+                //'data-autoclose'=>'true',
+                //'data-today-highlight'=>'true',
+                //'placeholder'=>'dd/mm/yyyy']])
+                //days: ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
+                //daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+                //daysMin: ["Do", "Se", "Te", "Qu", "Qu", "Se", "Sa"],
+                //months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                //monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                //today: "Hoje",
+                //monthsTitle: "Meses",
+                //clear: "Limpar",
+                //format: "dd/mm/yyyy",
+                //locate: 'ru',
+                
+                language: el.data('date-language') || 'pt-BR',
+                dateformat: el.data('date-format') || 'dd/mm/yyyy',
+                weekStart: el.data('week-start') || 1,
+                autoclose: el.data('autoclose') || true,
+                todayHighlight: el.data('today-highlight') || true,
+                //orientation: 'bottom' // Position issue when using BS4, set it to bottom until officially supported
             });
         });
     };
@@ -1366,8 +1430,8 @@ var Codebase = function() {
         // * - Represents an alphanumeric character (A-Z,a-z,0-9)
         jQuery('.js-masked-date:not(.js-masked-enabled)').mask('99/99/9999');
         jQuery('.js-masked-date-dash:not(.js-masked-enabled)').mask('99-99-9999');
-        jQuery('.js-masked-phone:not(.js-masked-enabled)').mask('(999) 999-9999');
-        jQuery('.js-masked-phone-ext:not(.js-masked-enabled)').mask('(999) 999-9999? x99999');
+        jQuery('.js-masked-phone:not(.js-masked-enabled)').mask('(99) 9999-9999');
+        jQuery('.js-masked-phone-ext:not(.js-masked-enabled)').mask('(99) 9999-9999? x99999');
         jQuery('.js-masked-taxid:not(.js-masked-enabled)').mask('99-9999999');
         jQuery('.js-masked-ssn:not(.js-masked-enabled)').mask('999-99-9999');
         jQuery('.js-masked-pkey:not(.js-masked-enabled)').mask('a*-999-a999');
@@ -1567,6 +1631,30 @@ var Codebase = function() {
     var uiHelperMaxlength = function(){
         // Init Bootstrap Maxlength (with .js-maxlength class)
         jQuery('.js-maxlength:not(.js-maxlength-enabled)').each(function(){
+            // meus exemplos
+            //twoCharLinebreak: true,
+            //threshold: '%charsTotal%',
+            //warningClass: "badge badge-primary",
+            //limitReachedClass: "badge badge-danger",
+            //placement: 'top',
+            //message: 'Restam %charsRemaining% de %charsTotal% dígitos.'
+
+            // outros -->>>
+
+            //data-alwaysShow: true,
+            //var ct = "%charsTotal%";
+            //allowOverMax: true,
+            //message: 'Usados %charsTyped% de %charsTotal% caracteres.'
+            //preText: 'usados ',
+            //separator: ' de ',
+            //postText: ' caracteres.'
+            //'data-placement'=>'top', 
+            //'data-warning-class'=>'badge badge-primary',
+            //'data-limit-reached-class'=>'badge badge-danger',
+            //'data-threshold'=>'245',
+            //'data-pre-text'=>'Usados ',
+            //'data-separator'=>' de ',
+            //'data-post-text'=>' characteres',
             var el = jQuery(this);
 
             // Add .js-maxlength-enabled class to tag it as activated
@@ -1574,14 +1662,16 @@ var Codebase = function() {
 
             // Init
             el.maxlength({
-                alwaysShow: el.data('always-show') ? true : false,
-                threshold: el.data('threshold') || 10,
-                warningClass: el.data('warning-class') || 'badge badge-warning',
+                twoCharLinebreak: true,
+                alwaysShow: false,
+                threshold: el.data('threshold') || '%charsTotal%',
+                warningClass: el.data('warning-class') || 'badge badge-primary',
                 limitReachedClass: el.data('limit-reached-class') || 'badge badge-danger',
-                placement: el.data('placement') || 'bottom',
-                preText: el.data('pre-text') || '',
-                separator: el.data('separator') || '/',
-                postText: el.data('post-text') || ''
+                placement: el.data('placement') || 'top',
+                message: el.data('message') || 'Restam %charsRemaining% de %charsTotal% dígitos.'
+                //preText: el.data('pre-text') || '',
+                //separator: el.data('separator') || '/',
+                //postText: el.data('post-text') || ''
             });
         });
     };

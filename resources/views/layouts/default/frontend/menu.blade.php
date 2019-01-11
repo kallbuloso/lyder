@@ -30,7 +30,7 @@
 </li> 
 {{--  <li class="nav-main-heading">Vital</li>  --}}
 <li>
-    <a class="@activeIfUrl('blog','active')" href="{{ url('/blog') }}">
+    <a class="@activeIfUrl('blog*','active')" href="{{ url('/blog') }}">
         <i class="si si-wrench"></i>Blog
     </a>
 </li>

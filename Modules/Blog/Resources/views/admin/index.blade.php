@@ -19,14 +19,17 @@
             <!-- Dynamic Table Full -->
             <div class="block">
                 <div class="block-header block-header-default">
-                    <a href="{{ route('post.create') }}">
-                        <button class="btn btn-primary">
-                            <span class="sidebar-mini-hide">
-                                <i class="si si-wallet mr-5"></i>
-                                {{ __('Adicionar Novo Post') }}
-                            </span>
-                        </button>
-                    </a>
+                    <h3 class="block-title"></h3> {{-- Necessário para alinhar o botão à direita --}}
+                    <div class="block-options">
+                        <a href="{{ route('post.create') }}">
+                            <button class="btn btn-primary">
+                                <span class="sidebar-mini-hide">
+                                    <i class="si si-wallet mr-5"></i>
+                                    {{ __('Adicionar Novo Post') }}
+                                </span>
+                            </button>
+                        </a>
+                    </div>
                     {{--  <h3 class="block-title">Posts</h3>  --}}
                 </div>
                 <div class="block-content block-content-full">
@@ -48,19 +51,19 @@
                                 <td class="font-w600">{{ $post->title }}</td>
                                 <td class="d-none d-sm-table-cell">@truncate($post->excerpt,'100')</td>
                                 <td class="d-none d-sm-table-cell">
-                                    {!! $post->published_at ? '<span class="badge badge-success">Publicado</span>' : '<span class="badge badge-Danger">Não publicado</span>' !!}
+                                    {!! $post->published_at !== null ? '<span class="badge badge-success">Publicado</span>' : '<span class="badge badge-danger">Não publicado</span>' !!}
                                 </td>
                                 <td class="text-center">                                    
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Ver">
-                                            <i class="fa fa-eye"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar">
-                                            <i class="fa fa-pencil"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir">
-                                            <i class="fa fa-times"></i>
-                                        </button>
+                                            <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Ver" href="{{ route('post.show',$post) }}" target="_blank">
+                                                <i class="fa fa-eye"></i>
+                                            </a>   
+                                            <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar" href="{{ route('post.edit',$post) }}">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>   
+                                            <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" href="">
+                                                <i class="fa fa-times"></i>
+                                            </a> 
                                     </div>
                                 </td>
                             </tr>

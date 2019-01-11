@@ -4,7 +4,7 @@
  *  Description: Custom JS code used in Form Plugins
  */
 
-var BeFormPlugins = function() {
+var BeFormPlugins = function() {    
     // Init jQuery AutoComplete example, for more examples you can check out https://github.com/Pixabay/jQuery-autoComplete
     var initAutoComplete = function(){
         // Init autocomplete functionality
@@ -25,10 +25,21 @@ var BeFormPlugins = function() {
         });
     };
 
+    // var initCharsCount = function(){
+    //     jQuery('.js-char-count').maxlength({
+    //         threshold: 20,
+    //         warningClass: "badge badge-primary",
+    //         limitReachedClass: "badge badge-danger",
+    //         placement: 'top',
+    //         message: 'Usados %charsTyped% de %charsTotal% caracteres.'
+    //     });
+    // };
+
     return {
         init: function () {
             // Init jQuery AutoComplete example
             initAutoComplete();
+            // initCharsCount();
         }
     };
 }();

@@ -445,9 +445,22 @@ mark,
   content: "\2014 \00A0";
 }
 
-.img-fluid {
+.img-fluid { 
   max-width: 100%;
+  max-height: 100%;
   height: auto;
+}
+
+.img-fluid-custom { 
+  float:left;
+  display: initial;
+  margin: auto;
+  z-index: 6;
+  overflow: hidden;
+  max-width: 239px;
+  max-height: 117px;
+  width: 100%;
+  height: 100%;
 }
 
 .img-thumbnail {

@@ -19,20 +19,33 @@
 // });
 
 Route::prefix('blog')->group(function() {
-    Route::get('/', 'BlogController@index');
+    Route::get('/', 'PostsController@blog');
+    Route::get('/{post}', 'PostsController@show')->name('post.show');
+    Route::get('categorias/{category}', 'CategoriesController@show')->name('categories.show');
+    Route::get('tags/{tag}', 'TagsController@show')->name('tags.show');
 
     Route::group([
         'middleware' => ['web', 'auth'], 
         'prefix' => 'admin'],
         function()
         {
-            Route::get('/', 'PostsController@index')->name('dashboard');
+            //Route::get('post', 'PostsController@index')->name('dashboard');
             Route::get('/post', 'PostsController@index')->name('allPosts');
-            Route::get('/create', 'PostsController@create')->name('post.create');
-            Route::post('/', 'PostsController@store')->name('postStore');
-            Route::get('posts/{post}', 'PostsController@edit')->name('postEdit');
-            Route::put('posts/{post}', 'PostsController@update')->name('postUpdate');
+            Route::get('/post/create', 'PostsController@create')->name('post.create');
+            Route::post('/post', 'PostsController@store')->name('post.store');
+            Route::get('/post/edit/{post}', 'PostsController@edit')->name('post.edit');
+            Route::put('/post/update/{post}', 'PostsController@update')->name('post.update');
+
+            Route::post('post/{post}/photos', 'PhotosController@store')->name('photos.store');
+            Route::delete('post/{photo}', 'PhotosController@destroy')->name('photos.destroy');
             // rotas do blog
         }
     );
 });
+
+// Route::group(['prefix' => 'laravel-crud-search-sort-ajax-modal-form'], function () {
+//     Route::get('/', 'Crud5Controller@index');
+//     Route::match(['get', 'post'], 'create', 'Crud5Controller@create');
+//     Route::match(['get', 'put'], 'update/{id}', 'Crud5Controller@update');
+//     Route::delete('delete/{id}', 'Crud5Controller@delete');
+// });
