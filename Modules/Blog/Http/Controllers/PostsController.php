@@ -9,6 +9,8 @@ use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Tag;
 use Modules\Blog\Models\Category;
 use Carbon\Carbon;
+use  Modules\Blog\Http\Requests\StorePostRequest;
+use  Modules\Blog\Http\Requests\UpdatePostRequest;
 
 class PostsController extends Controller
 {
@@ -67,47 +69,19 @@ class PostsController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        /**
-         * validação
-         */
-        $request->validate([
-            'title' => 'required|string|max:50|unique:posts',
-            'excerpt' => 'required|string|max:150',
-            'body' => 'required',
-            'categories' => 'required',
-        ]);
-        /**
-         * verifica se o published_at não é null e adiciona a hora
-         */
-        $dat = $request->get('published_at');
-        if (!$dat == null) {
-            $publishAt = $request->get('published_at');
-            $dataT = implode('-', array_reverse(explode('/', $publishAt)));
-            $dat = date('Y-m-d', strtotime($dataT));
-            $dat = $dat. date(' H:i:s');                
-        } else {            
-            $dat = null;
-        }  
-
-        /**
-         * Salvar
-         */
+        // return dd($request->all());
         $post = new Post;
-        $post->author_id = '1';
         $post->title = $request->get('title'); //max 50 caracteres
-        $post->slug = str_slug($post->title);
-        $post->url = str_slug($post->title);
         $post->body = $request->get('body');
         $post->excerpt = $request->get('excerpt'); // max 150 caracteres
-        $post->published_at = $dat; 
-        $post->category_id = $request->get('categories');
+        $post->published_at = $request->get('published_at'); 
+        $post->category_id = $request->get('category_id');
         $post->save();
         $post->tags()->attach($request->get('tags'));
         
         return redirect()->route('post.edit', $post)->with('flash', 'Publicado com sucesso');
-        // return dd($dat);
     }
 
     /**
@@ -119,7 +93,6 @@ class PostsController extends Controller
         $categories = Category::pluck('name', 'id')->toArray();
         $tags = Tag::pluck('name', 'id')->toArray();
         return view('blog::admin.postedit', compact('categories', 'tags', 'post'));
-        //return dd($post);
     }
 
     /**
@@ -127,50 +100,45 @@ class PostsController extends Controller
      * @param  Request $request
      * @return Response
      */
-    public function update(Request $request, Post $post )
+    public function update(UpdatePostRequest $request, Post $post )
     {
-        /**
-         * validação
-         */
-        $request->validate([
-            'title' => 'required|string|max:50',
-            'excerpt' => 'required|string|max:150',
-            'body' => 'required',
-            'categories' => 'required',
-        ]);
-        /**
-         * verifica se o published_at não é null e adiciona a hora
-         */
-        $dat = $request->get('published_at');
-        if (!$dat == null) {
-            $publishAt = $request->get('published_at');
-            $dataT = implode('-', array_reverse(explode('/', $publishAt)));
-            $dat = date('Y-m-d', strtotime($dataT));
-            $dat = $dat. date(' H:i:s');                
-        } else {            
-            $dat = null;
-        } 
-
-        $post->author_id = '1';
-        $post->title = $request->get('title'); //max 50 caracteres
-        $post->slug = str_slug($post->title);
-        $post->url = str_slug($post->title);
-        $post->body = $request->get('body');
-        $post->excerpt = $request->get('excerpt'); // max 150 caracteres
-        $post->published_at = $dat; 
-        $post->category_id = $request->get('categories');
-        $post->save();
+        //$post->title = $request->get('title'); //max 50 caracteres
+        // $post->body = $request->get('body');
+        // $post->excerpt = $request->get('excerpt'); // max 150 caracteres
+        // $post->published_at = $request->get('published_at'); 
+        // $post->category_id = $request->get('category_id');
+        // $post->save();
+        $post->update($request->all());
         $post->tags()->sync($request->get('tags'));
-        
+
         return redirect()->route('post.edit', $post)->with('flash', 'Artigo atualizado com sucesso');
-        //return dd($post);
     }
 
     /**
      * Remove the specified resource from storage.
      * @return Response
      */
-    public function destroy()
+    public function destroy(Request $request, Post $post)
     {
+        // return $post->id;        
+        $post->delete();
+
+        return redirect()
+            ->route('allPosts')
+            ->with('flash', 'Artigo apagado com sucesso');
     }
+
+    // public function validatePost($request)
+    // {
+    //     /**
+    //      * validação
+    //      */
+    //     return $request->validate([
+    //         'title' => 'required|string|max:50',
+    //         'excerpt' => 'required|string|max:150',
+    //         'body' => 'required',
+    //         'categories' => 'required',
+    //     ]);
+    // }
+    
 }

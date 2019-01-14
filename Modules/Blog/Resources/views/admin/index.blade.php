@@ -60,10 +60,14 @@
                                             </a>   
                                             <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Editar" href="{{ route('post.edit',$post) }}">
                                                 <i class="fa fa-pencil"></i>
-                                            </a>   
-                                            <a class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Excluir" href="">
-                                                <i class="fa fa-times"></i>
-                                            </a> 
+                                            </a>
+                                            <form action="{{ route('post.destroy', $post) }}" method="POST" >
+                                                @csrf {{ method_field('DELETE') }}
+                                                <button class="btn btn-sm btn-secondary" type="submit" data-toggle="tooltip" title="Excluir"
+                                                    onclick="return confirm('Deseja realmente excluir o artigo {{ $post->title }}?')">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </form>
                                     </div>
                                 </td>
                             </tr>

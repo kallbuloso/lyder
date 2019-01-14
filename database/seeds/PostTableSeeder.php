@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class PostTableSeeder extends Seeder
 {
@@ -14,6 +15,9 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
+        
+        Storage::disk('public')->deleteDirectory('posts');
+        
         $faker =  Faker::create(app()->getLocale());
         DB::table('posts')->truncate();
         DB::table('post_tag')->truncate();
@@ -30,7 +34,6 @@ class PostTableSeeder extends Seeder
             'author_id'     => '1',
             'title'     => $title,
             'url'     => str_slug($title),
-            'slug'      => str_slug($title),
             'excerpt'       => 'Este é um pequeno resumo da minha page de teste para o blog.',
             'body'      => '<h2><strong>Getting out there</strong></h2>
 
@@ -78,7 +81,6 @@ class PostTableSeeder extends Seeder
                 'author_id'     => rand(1,$qntd),
                 'title'     => $faker->text(rand(10,50)),
                 'url'     => str_slug($title),
-                'slug'      => $faker->slug(),
                 'excerpt'       => $faker->text(rand(90,150)),
                 'body'      => $faker->paragraphs(rand(10,20),true),
                 'image'     => rand(0,1) == 1 ? $image : NULL,
@@ -91,41 +93,26 @@ class PostTableSeeder extends Seeder
 
 
         // categoryes
-        DB::table('categories')->insert([
-            'name' => 'Projetos',
-            'created_at' => clone($date),
-            'updated_at' => clone($date)
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Eletrônica',
-            'created_at' => clone($date),
-            'updated_at' => clone($date)
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Sistemas',
-            'created_at' => clone($date),
-            'updated_at' => clone($date)
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Controles',
-            'created_at' => clone($date),
-            'updated_at' => clone($date)
-        ]);
-        
-        // tags
-        for ($i=0; $i <$qntd ; $i++) {
-            DB::table('tags')->insert([
-                'name' => $faker->lastname(),
+        $names = ['Projetos', 'Eletrônica', 'Sistemas', 'Controles'];
+        foreach ($names as $name) {
+            DB::table('categories')->insert([
+                'name' => $name,
+                'url' => str_slug($name),
                 'created_at' => clone($date),
                 'updated_at' => clone($date)
             ]);
         }
-
-        // Posts Tags
+        
+        // tags & post_tags
         for ($i=0; $i <$qntd ; $i++) {
+            $name = $faker->lastname();
+            DB::table('tags')->insert([
+                'name' => $name,
+                'url' => str_slug($name),
+                'created_at' => clone($date),
+                'updated_at' => clone($date)
+            ]);
+                
             DB::table('post_tag')->insert([
                 'post_id' => rand(1,$qntd),
                 'tag_id' => rand(1,$qntd),

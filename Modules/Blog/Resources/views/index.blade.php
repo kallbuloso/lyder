@@ -37,10 +37,10 @@
                 <div class="col-xl-8">
                     @foreach ($posts as $post)
                     <div class="mb-50">
-                        @if ($post->photos->count() === 1)                                    
+                        @if ($post->photos->count() >= 1)                                    
                             <div class="overflow-hidden rounded mb-20" style="height: 200px;">
                                 <a class="img-link" href="be_pages_generic_story.html">
-                                    <img class="img-fluid" src="{{ $post->photos->first()->url }}   " alt="">
+                                    <img class="img-fluid" src="{{ url($post->photos->first()->url) }}" alt="">
                                 </a>
                             </div>
                         @endif
@@ -63,7 +63,7 @@
                                 <i class="fa fa-comment mr-5"></i> Comentários 23
                             </a>
                         </div>
-                        <P>@truncate($post->excerpt,'220')</P>
+                        <P>@truncate($post->excerpt,'150')</P>
                         @isset($post->tags)
                         <div class="text-muted mb-10">
                             @foreach ($post->tags as $tag)

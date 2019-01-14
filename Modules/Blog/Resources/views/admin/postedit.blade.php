@@ -8,8 +8,8 @@
             <div class="bg-primary-dark-op">
                 <div class="content content-top text-center overflow-hidden">
                     <div class="pt-50 pb-20">
-                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Editar Post</h1>
-                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Vamos editar este Post!</h2>
+                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Editar Artigo</h1>
+                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Vamos editar o artigo "{{ $post->title }}"</h2>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                                             'attributes'=>['placeholder'=>'Título do post', 
                                             'class'=>'js-maxlength form-control',
                                             'maxlength'=>'50',
-                                            'require']])
+                                            'require', 'disabled']])
                                 </div>
                                 <div class="form-group">
                                     @textArea(['col'=>'12','label'=>'Resumo do post','name'=>'excerpt','value'=>$post->excerpt,
@@ -53,12 +53,12 @@
                         <div class="block">
                             <div class="block-content">
                                 <div class="form-group">
-                                    @datetime(['col'=>'12','label'=>'Data de publicação','name'=>'published_at','value'=>$post->published_at <> null ? date('d/n/Y', strtotime($post->published_at)) : null,
+                                    @datetime(['col'=>'12','label'=>'Data de publicação','name'=>'published_at','value'=>$post->published_at !== null ? date('d/m/Y', strtotime($post->published_at)) : null,
                                             'attributes'=>['class'=>'js-datepicker form-control',
                                             'placeholder'=>'dd/mm/yyyy']])
                                 </div>
                                 <div class="form-group">
-                                    @select(['col'=>'12','label'=>'Categoria','name'=>'categories','arrayOptions'=>['< Selecione uma categoria >'=>$categories],'selected'=>$post->category_id,
+                                    @select(['col'=>'12','label'=>'Categoria','name'=>'category_id','arrayOptions'=>['< Selecione uma categoria >'=>$categories],'selected'=>$post->category_id,
                                             'optionsAttributes'=>['data-placeholder'=>'< Selecione uma categoria >','require'=>'require']])
                                 </div>
                                 <div class="form-group">

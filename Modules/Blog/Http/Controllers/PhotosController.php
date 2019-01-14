@@ -4,7 +4,7 @@ namespace Modules\Blog\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Models\Auth;
+// use App\Models\Auth;
 // use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Routing\Controller;
 use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Photo;
+use Illuminate\Support\Facades\Auth;
 
 class PhotosController extends Controller
 {
@@ -43,19 +44,16 @@ class PhotosController extends Controller
         $request->validate([
             'photo' => 'required|image|max:2048'
         ]);
-        $photo = request()->file('photo')->store('public');
 
-
-        Photo::create([
-            'url' => Storage::url($photo),
-            'post_id' => $post->id,
+        $post->photos()->create([
+            'url' => Storage::url(request()->file('photo')->store('posts/'. Auth::id(), 'public')),
         ]);
 
+        // Photo::create([
+        //     'url' => Storage::url($photo),
+        //     'post_id' => $post->id,
+        // ]);
         //return back()->with('flash', 'Salvo com sucesso');
-        // return $post->id;
-        // return request()->all();
-        //return  $photoUrl;
-        // return  request()->file('photo');
     }
 
     /**
@@ -91,10 +89,13 @@ class PhotosController extends Controller
      */
     public function destroy(Photo $photo)
     {
+
+        // return $photo->url;
         $photo->delete();
 
-        $photoPath = str_replace('storage', 'public', $photo->url);
-        Storage::delete($photoPath);
+        // $photoPath = str_replace('storage', 'public', $photo->url);
+        // Storage::delete($photoPath);
+        // Storage::disk('public')->delete($photo->url);
 
         return back()->with('flash', 'Imagem eliminada com sucesso');
         // return $photoPath;

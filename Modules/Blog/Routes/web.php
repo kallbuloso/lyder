@@ -35,6 +35,7 @@ Route::prefix('blog')->group(function() {
             Route::post('/post', 'PostsController@store')->name('post.store');
             Route::get('/post/edit/{post}', 'PostsController@edit')->name('post.edit');
             Route::put('/post/update/{post}', 'PostsController@update')->name('post.update');
+            Route::delete('/post/delete/{post}', 'PostsController@destroy')->name('post.destroy');
 
             Route::post('post/{post}/photos', 'PhotosController@store')->name('photos.store');
             Route::delete('post/{photo}', 'PhotosController@destroy')->name('photos.destroy');

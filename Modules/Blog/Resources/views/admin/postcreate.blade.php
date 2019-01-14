@@ -8,8 +8,8 @@
             <div class="bg-primary-dark-op">
                 <div class="content content-top text-center overflow-hidden">
                     <div class="pt-50 pb-20">
-                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Novo Post</h1>
-                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Vamos criar um novo Post!</h2>
+                        <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Novo Artigo</h1>
+                        <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Vamos criar um novo Artigo!</h2>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <div class="block">
                             <div class="block-content">
                                 <div class="form-group">
-                                    @text(['col'=>'12','label'=>'Título do post','name'=>'title','value'=>null,
+                                    @text(['col'=>'12','label'=>'Título do post (Atenção!!! Depois de salvo, o título não poderá ser alterado)','name'=>'title','value'=>null,
                                             'attributes'=>['placeholder'=>'Título do post', 
                                             'class'=>'js-maxlength form-control',
                                             'maxlength'=>'50',
@@ -57,7 +57,7 @@
                                             'placeholder'=>'dd/mm/yyyy']])
                                 </div>
                                 <div class="form-group">
-                                    @select(['col'=>'4','label'=>'Categoria','name'=>'categories','arrayOptions'=>$categories,'selected'=>null,
+                                    @select(['col'=>'4','label'=>'Categoria','name'=>'category_id','arrayOptions'=>$categories,'selected'=>null,
                                             'optionsAttributes'=>['placeholder'=>'< Selecione uma categoria >','require'=>'require']])
                                 </div>
                                 <div class="form-group">

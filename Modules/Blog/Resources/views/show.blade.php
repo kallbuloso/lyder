@@ -7,8 +7,8 @@
     <main id="main-container">
         <!-- Hero -->
         <div class="bg-primary overflow-hidden">
-            @if ($post->photos->count() === 1)
-                <div class="bg-image" style="background-image: url({{ $post->photos->first()->url }});">                
+            @if ($post->photos->count() >= 1)
+                <div class="bg-image" style="background-image: url({{ url($post->photos->first()->url) }});">                
             @else                
                 <div class="bg-image" style="background-image: url('/assets/img/photos/photo27@2x.jpg');">
             @endif
@@ -24,7 +24,12 @@
                                     </a>                                
                                 @endif
                                 <a class="text-body-bg-dark" href="be_pages_generic_profile.html">{{ $post->author->nik_name }}</a> 
-                                &bull; {{ date('d/m/Y', strtotime($post->published_at)) }}
+                                &bull; 
+                                @isset($post->published_at)                                    
+                                    {{ date('d/m/Y', strtotime($post->published_at)) }}
+                                @else
+                                    {{ __('Artigo ainda não publicado') }}
+                                @endisset
                             </div>
                         </div>
                     </div>

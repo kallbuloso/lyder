@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = [];
+    protected $fillable = ['url', 'name'];
+    // protected $guarded = [];
         
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'url';
     }
         
     public function posts()
@@ -18,4 +19,9 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
+    public function setNameAttribute($name)
+    {
+        $this->attibutes['name'] = $name;
+        $this->attibutes['url'] = str_slug($name);
+    }
 }
